@@ -1,0 +1,23 @@
+<div class="container">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <td>ID</td><td>Date</td><td>CustomerId</td><td>Bill details</td>
+    </tr>
+    </thead>
+    @if (bills){
+      <tbody>
+        @for (bill of bills._embedded.bills;track bill){
+          <tr>
+            <td>{{bill.id}}</td>
+            <td>{{ bill.billingDate | date :'dd/MM/yyyy' }}</td>
+            <td>{{bill.CustomerId}}</td>
+            <td>
+              <button class="btn btn-success" (click)="getBillDetails(bill)" >Bill Details</button>
+            </td>
+          </tr>}
+      </tbody>}
+  </table>
+</div>
+

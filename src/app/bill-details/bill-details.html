@@ -1,0 +1,55 @@
+@if (billDetails) {
+  <div class="container mt-2" >
+<div class="row">
+<div class="col-md-6">
+  <div class="card">
+    <div class="card-header">bill ID:{{billId}}</div>
+    <div class="card-body text-sm-start">
+      <ul class="list-group">
+        <li class="list-group-item">Bill ID :{{billDetails.id}}</li>
+        <li class="list-group-item">Bill Date :{{billDetails.billingDate | date :'dd/MM/yyyy'}}</li>
+        <li class="list-group-item">Customer ID :{{billDetails.customerId}}</li>
+        <li class="list-group-item">Customer ID: {{billDetails.customer.id}}</li>
+        <li class="list-group-item">Customer Name: {{billDetails.customer.name}}</li>
+        <li class="list-group-item">Customer Email: {{billDetails.customer.email}}</li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+    <div class="col-md-6"></div>
+     <div class="card-header">Produt Items</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ProductItem Id</th><th>Quantity ProductItem</th><th>UnitPrice</th><th>Product Id</th><th>Quantity</th><th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (pi of billDetails.productitems;track pi){
+            <tr>
+              <td>{{pi.productId}}</td>
+              <td>{{pi.quantity}}</td>
+              <td>{{pi.unitprice}}</td>
+              <td>{{pi.product.name}}</td>
+              <td>{{pi.product.quantity}}</td>
+
+
+              <td class="text-end">{{pi.price | number : '.2'}}</td>
+              <td class="text-end">{{pi.quantity}}</td>
+              <td class="text-end">{{pi.amount | number : '.2'}}</td>
+
+            </tr>}
+        <tr class="bg-dark text-white">
+          <td colspan="5" class="text-end" >Total</td>
+          <td class="text-end">{{billDetails.total | number : '.2'}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>}
+
+
