@@ -1,23 +1,36 @@
-<div class="container">
+<div class="customers-container">
+  <div class="customers-header">
+    <h1>Liste des Clients</h1>
+    <p class="subtitle">Gestion complète des clients</p>
+  </div>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <td>ID</td><td>Name</td><td>Email</td><td>Bills</td>
-    </tr>
-    </thead>
-    @if (customers){
-      <tbody>
-        @for (c of customers._embedded.customers;track c){
-          <tr>
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.email}}</td>
-            <td>
-              <button class="btn btn-success" (click)="getBills(c)">Bills</button>
-            </td>
-          </tr>}
-      </tbody>}
-  </table>
+  <div class="customers-table-container">
+    <table class="table customers-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+
+      @if (customers && customers._embedded?.customers) {
+        <tbody>
+          @for (c of customers._embedded.customers; track c) {
+            <tr>
+              <td class="id-column">{{ c.id }}</td>
+              <td class="name-column">{{ c.name }}</td>
+              <td class="email-column">{{ c.email }}</td>
+              <td>
+                <button class="btn-bills" (click)="getBills(c)">
+                  <i class="fas fa-file-invoice"></i> Factures
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      }
+    </table>
+  </div>
 </div>
-

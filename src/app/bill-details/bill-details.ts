@@ -31,4 +31,9 @@ export class BillDetails  implements  OnInit{
   getBillDetails() {
 
   }
+  goBack(): void {
+
+    this.router.navigate(['/bills']);
+
+  }
 }
